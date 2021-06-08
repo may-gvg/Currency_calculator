@@ -12,7 +12,7 @@ data_from_json = response.json()
 print(type(data_from_json))
 
 csv_file = open("output.csv", 'w', encoding='utf-8', newline='')
-writer = csv.writer(csv_file, delimeter=';')
+writer = csv.writer(csv_file, delimiter=';')
 
 rates = data_from_json[0]['rates']
 for rate in rates:
