@@ -1,12 +1,13 @@
 
 from flask import request, redirect
+import requests
 from flask import render_template
 import csv
 from flask import Flask
 
 app = Flask(__name__)
 
-import requests
+
 
 
 response = requests.get("http://api.nbp.pl/api/exchangerates/tables/C?format=json")
