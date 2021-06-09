@@ -1,0 +1,30 @@
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+ {% block head %}
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}" />
+        <meta charset="utf-8">
+        <title>Autoportret</title>
+
+ {% endblock %}
+
+    </head>
+    <body>
+    <h1>Witam na mojej stronie domowej</h1> 
+    
+    <a href="https://i.iplsc.com/-/000855Q03DLUJ7C6-C122.jpg"><img class="center" src="https://i.iplsc.com/-/000855Q03DLUJ7C6-C122.jpg" width="300" alt="tool"></a>
+
+    <div> 
+
+
+    <body>
+        <h1>Warehouse</h1>
+        <img src="{{url_for('static',filename='logo.jpg')}}" />
+        <div id="content">{% block content %}{% endblock %}</div>
+    </body>
+
+    </div> 
+
