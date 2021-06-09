@@ -1,0 +1,67 @@
+body {
+    background: #40DF40;
+    font-family: tahoma
+}
+
+
+div {
+    background: white; 
+    padding:10px;
+    box-shadow: 3px 3px grey; 
+    margin-bottom:10px;
+    max-width: 500px;
+
+}
+
+
+h1 {
+    font-size: 38px;
+    text-align: center;
+    font-weight: 666 ; 
+    background: lightgrey;
+}
+
+
+h2 {
+    font-weight: bold ; 
+    font-size: 24px;
+}
+
+
+p {
+    
+    font-size: 20px;   
+}
+
+
+li {
+    color: #D01814;
+    font-size: 20px;
+}
+
+
+td {
+    
+    font-size: 20px;
+}
+
+
+th {
+    text-align: left;
+}
+
+
+.ramka {
+        border: 1px solid red; 
+        width: 200px
+}
+
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto ;
+    padding: 30px
+}
+
+div#errors li {color: red;}
