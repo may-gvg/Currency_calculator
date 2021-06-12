@@ -9,17 +9,16 @@
 <form action="/waluty" name="przelicz" method="POST">
     Chce kupić:
     <select name="zczego">
-        
-	<option class="usd"> USD </option>
-	<option class="pln"> EUR </option>
-        <option class="chf" > CHF </option>
+        {% autoescape false %}
+        {{ options }}
+        {% endautoescape %}
     </select>
 
     kwota
     <input type="number" name="kwota" placeholder="Kwota" style="text-align:center;margin-right:5px;">
 
     otrzymasz:
-    <input value="{{ wynik }}" type="number" id="wynik" placeholder="wynik" style="text-align:center" disabled>
+    <input value="{{ wynik }}" type="number" id="wynik" placeholder="wynik" style="text-align:center" disabled> PLN
 
     <input type="submit" value="przelicz walutę" onclick="przelicz();">
 
