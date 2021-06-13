@@ -9,9 +9,9 @@
 <form action="/waluty" name="przelicz" method="POST">
     Chce kupić:
     <select name="zczego">
-        {% autoescape false %}
-        {{ options }}
-        {% endautoescape %}
+        {%for option in options %}
+            <option value="{{ option }}">{{ option }}</option>
+        {% endfor %}
     </select>
 
     kwota
