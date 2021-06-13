@@ -8,43 +8,46 @@ import requests
 app = Flask(__name__)
 
 def read_csv():
-    arr = {}
-    csvfile = open('output.csv', newline='', encoding="UTF-8")
-    spamreader = csv.reader(csvfile, delimiter=';', quotechar='|')
-    for row in spamreader:
-        arr[row[1]] = row[3]
-    return arr
+    csvlist = {}
+    with open('output.csv', newline='', encoding="UTF-8") as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=';', quotechar='|')
+        for row in spamreader:
+            csvlist[row[1]] = row[3]
+        return csvlist
+
+def sciagnij_waluty():
+    try:
+        response = requests.get("http://api.nbp.pl/api/exchangerates/tables/C?format=json")
+        data_from_json = response.json()
+        print(type(data_from_json))
+        with  open("output.csv", 'w', encoding='utf-8', newline='') as csv_file:
+            writer = csv.writer(csv_file, delimiter=';')
+            rates = data_from_json[0]['rates']
+            for rate in rates:
+                currency = rate['currency']
+                code = rate['code']
+                bid = rate['bid']
+                ask = rate['ask']
+
+                print(currency, code, bid, ask)
+                writer.writerow([currency, code, bid, ask])
+            csv_file.close()
+
+    except:
+        print("Błąd")
+        return
 
 
-try:
-    response = requests.get("http://api.nbp.pl/api/exchangerates/tables/C?format=json")
-    data_from_json = response.json()
-    print(type(data_from_json))
-    csv_file = open("output.csv", 'w', encoding='utf-8', newline='')
-    writer = csv.writer(csv_file, delimiter=';')
-except:
-    print("Błąd")
-    exit(1)
+sciagnij_waluty()
 
 
-rates = data_from_json[0]['rates']
-for rate in rates:
-    currency = rate['currency']
-    code = rate['code']
-    bid = rate['bid']
-    ask = rate['ask']
-
-    print(currency, code, bid, ask)
-    writer.writerow([currency, code, bid, ask])
-
-csv_file.close()
 
 @app.route ('/waluty', methods=['GET', 'POST'])
 def waluty():
    waluty = read_csv()
-   options = ""
+   options = []
    for waluta in waluty:
-        options += '<option value="' + waluta + '">' + waluta + '</option>'
+        options.append(waluta)
    print(options)
 
 
